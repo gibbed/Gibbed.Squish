@@ -62,19 +62,19 @@ namespace Gibbed.Squish
 
 		private sealed class Native32
 		{
-			[DllImport("squish_32.dll", EntryPoint = "SquishCompressImage")]
+			[DllImport("squish_32.dll", EntryPoint = "SquishCompressImage", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void CompressImage([MarshalAs(UnmanagedType.LPArray)] byte[] rgba, int width, int height, [MarshalAs(UnmanagedType.LPArray)] byte[] blocks, int flags);
 
-            [DllImport("squish_32.dll", EntryPoint = "SquishDecompressImage")]
+            [DllImport("squish_32.dll", EntryPoint = "SquishDecompressImage", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void DecompressImage([MarshalAs(UnmanagedType.LPArray)] byte[] rgba, int width, int height, [MarshalAs(UnmanagedType.LPArray)] byte[] blocks, int flags);
 		}
    
 		private sealed class Native64
 		{
-            [DllImport("squish_64.dll", EntryPoint = "SquishCompressImage")]
+            [DllImport("squish_64.dll", EntryPoint = "SquishCompressImage", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void CompressImage([MarshalAs(UnmanagedType.LPArray)] byte[] rgba, int width, int height, [MarshalAs(UnmanagedType.LPArray)] byte[] blocks, int flags);
 
-            [DllImport("squish_64.dll", EntryPoint = "SquishDecompressImage")]
+            [DllImport("squish_64.dll", EntryPoint = "SquishDecompressImage", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void DecompressImage([MarshalAs(UnmanagedType.LPArray)] byte[] rgba, int width, int height, [MarshalAs(UnmanagedType.LPArray)] byte[] blocks, int flags);
 		}
 	
