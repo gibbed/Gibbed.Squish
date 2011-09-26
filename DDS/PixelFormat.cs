@@ -187,6 +187,18 @@ namespace Gibbed.Squish.DDS
             }
         }
 
+        public void Serialize(Stream output, bool littleEndian)
+        {
+            output.WriteValueU32(this.Size, littleEndian);
+            output.WriteValueEnum<PixelFormatFlags>(this.Flags, littleEndian);
+            output.WriteValueU32(this.FourCC, littleEndian);
+            output.WriteValueU32(this.RGBBitCount, littleEndian);
+            output.WriteValueU32(this.RedBitMask, littleEndian);
+            output.WriteValueU32(this.GreenBitMask, littleEndian);
+            output.WriteValueU32(this.BlueBitMask, littleEndian);
+            output.WriteValueU32(this.AlphaBitMask, littleEndian);
+        }
+
         public void Deserialize(Stream input, bool littleEndian)
         {
             this.Size = input.ReadValueU32(littleEndian);

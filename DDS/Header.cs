@@ -50,6 +50,22 @@ namespace Gibbed.Squish.DDS
         public uint CubemapFlags;
         public byte[] Reserved2 = new byte[3 * 4];
 
+        public void Serialize(Stream output, bool littleEndian)
+        {
+            output.WriteValueU32(this.Size, littleEndian);
+            output.WriteValueEnum<HeaderFlags>(this.Flags, littleEndian);
+            output.WriteValueS32(this.Height, littleEndian);
+            output.WriteValueS32(this.Width, littleEndian);
+            output.WriteValueU32(this.PitchOrLinearSize, littleEndian);
+            output.WriteValueU32(this.Depth, littleEndian);
+            output.WriteValueU32(this.MipMapCount, littleEndian);
+            output.Write(this.Reserved1, 0, this.Reserved1.Length);
+            this.PixelFormat.Serialize(output, littleEndian);
+            output.WriteValueU32(this.SurfaceFlags, littleEndian);
+            output.WriteValueU32(this.CubemapFlags, littleEndian);
+            output.Write(this.Reserved2, 0, this.Reserved2.Length);
+        }
+
         public void Deserialize(Stream input, bool littleEndian)
         {
             this.Size = input.ReadValueU32(littleEndian);
