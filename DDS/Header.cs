@@ -20,6 +20,7 @@
  *    distribution.
  */
 
+using System;
 using System.IO;
 using Gibbed.IO;
 
@@ -50,38 +51,50 @@ namespace Gibbed.Squish.DDS
         public uint CubemapFlags;
         public byte[] Reserved2 = new byte[3 * 4];
 
+        [Obsolete]
         public void Serialize(Stream output, bool littleEndian)
         {
-            output.WriteValueU32(this.Size, littleEndian);
-            output.WriteValueEnum<HeaderFlags>(this.Flags, littleEndian);
-            output.WriteValueS32(this.Height, littleEndian);
-            output.WriteValueS32(this.Width, littleEndian);
-            output.WriteValueU32(this.PitchOrLinearSize, littleEndian);
-            output.WriteValueU32(this.Depth, littleEndian);
-            output.WriteValueU32(this.MipMapCount, littleEndian);
+            this.Serialize(output, littleEndian == true ? Endian.Little : Endian.Big);
+        }
+
+        public void Serialize(Stream output, Endian endian)
+        {
+            output.WriteValueU32(this.Size, endian);
+            output.WriteValueEnum<HeaderFlags>(this.Flags, endian);
+            output.WriteValueS32(this.Height, endian);
+            output.WriteValueS32(this.Width, endian);
+            output.WriteValueU32(this.PitchOrLinearSize, endian);
+            output.WriteValueU32(this.Depth, endian);
+            output.WriteValueU32(this.MipMapCount, endian);
             output.Write(this.Reserved1, 0, this.Reserved1.Length);
-            this.PixelFormat.Serialize(output, littleEndian);
-            output.WriteValueU32(this.SurfaceFlags, littleEndian);
-            output.WriteValueU32(this.CubemapFlags, littleEndian);
+            this.PixelFormat.Serialize(output, endian);
+            output.WriteValueU32(this.SurfaceFlags, endian);
+            output.WriteValueU32(this.CubemapFlags, endian);
             output.Write(this.Reserved2, 0, this.Reserved2.Length);
         }
 
+        [Obsolete]
         public void Deserialize(Stream input, bool littleEndian)
         {
-            this.Size = input.ReadValueU32(littleEndian);
-            this.Flags = input.ReadValueEnum<HeaderFlags>(littleEndian);
-            this.Height = input.ReadValueS32(littleEndian);
-            this.Width = input.ReadValueS32(littleEndian);
-            this.PitchOrLinearSize = input.ReadValueU32(littleEndian);
-            this.Depth = input.ReadValueU32(littleEndian);
-            this.MipMapCount = input.ReadValueU32(littleEndian);
+            this.Deserialize(input, littleEndian == true ? Endian.Little : Endian.Big);
+        }
+
+        public void Deserialize(Stream input, Endian endian)
+        {
+            this.Size = input.ReadValueU32(endian);
+            this.Flags = input.ReadValueEnum<HeaderFlags>(endian);
+            this.Height = input.ReadValueS32(endian);
+            this.Width = input.ReadValueS32(endian);
+            this.PitchOrLinearSize = input.ReadValueU32(endian);
+            this.Depth = input.ReadValueU32(endian);
+            this.MipMapCount = input.ReadValueU32(endian);
             if (input.Read(this.Reserved1, 0, this.Reserved1.Length) != this.Reserved1.Length)
             {
                 throw new EndOfStreamException();
             }
-            this.PixelFormat.Deserialize(input, littleEndian);
-            this.SurfaceFlags = input.ReadValueU32(littleEndian);
-            this.CubemapFlags = input.ReadValueU32(littleEndian);
+            this.PixelFormat.Deserialize(input, endian);
+            this.SurfaceFlags = input.ReadValueU32(endian);
+            this.CubemapFlags = input.ReadValueU32(endian);
             if (input.Read(this.Reserved2, 0, this.Reserved2.Length) != this.Reserved2.Length)
             {
                 throw new EndOfStreamException();

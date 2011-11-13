@@ -187,28 +187,40 @@ namespace Gibbed.Squish.DDS
             }
         }
 
+        [Obsolete]
         public void Serialize(Stream output, bool littleEndian)
         {
-            output.WriteValueU32(this.Size, littleEndian);
-            output.WriteValueEnum<PixelFormatFlags>(this.Flags, littleEndian);
-            output.WriteValueU32(this.FourCC, littleEndian);
-            output.WriteValueU32(this.RGBBitCount, littleEndian);
-            output.WriteValueU32(this.RedBitMask, littleEndian);
-            output.WriteValueU32(this.GreenBitMask, littleEndian);
-            output.WriteValueU32(this.BlueBitMask, littleEndian);
-            output.WriteValueU32(this.AlphaBitMask, littleEndian);
+            this.Serialize(output, littleEndian == true ? Endian.Little : Endian.Big);
         }
 
+        public void Serialize(Stream output, Endian endian)
+        {
+            output.WriteValueU32(this.Size, endian);
+            output.WriteValueEnum<PixelFormatFlags>(this.Flags, endian);
+            output.WriteValueU32(this.FourCC, endian);
+            output.WriteValueU32(this.RGBBitCount, endian);
+            output.WriteValueU32(this.RedBitMask, endian);
+            output.WriteValueU32(this.GreenBitMask, endian);
+            output.WriteValueU32(this.BlueBitMask, endian);
+            output.WriteValueU32(this.AlphaBitMask, endian);
+        }
+
+        [Obsolete]
         public void Deserialize(Stream input, bool littleEndian)
         {
-            this.Size = input.ReadValueU32(littleEndian);
-            this.Flags = input.ReadValueEnum<PixelFormatFlags>(littleEndian);
-            this.FourCC = input.ReadValueU32(littleEndian);
-            this.RGBBitCount = input.ReadValueU32(littleEndian);
-            this.RedBitMask = input.ReadValueU32(littleEndian);
-            this.GreenBitMask = input.ReadValueU32(littleEndian);
-            this.BlueBitMask = input.ReadValueU32(littleEndian);
-            this.AlphaBitMask = input.ReadValueU32(littleEndian);
+            this.Deserialize(input, littleEndian == true ? Endian.Little : Endian.Big);
+        }
+
+        public void Deserialize(Stream input, Endian endian)
+        {
+            this.Size = input.ReadValueU32(endian);
+            this.Flags = input.ReadValueEnum<PixelFormatFlags>(endian);
+            this.FourCC = input.ReadValueU32(endian);
+            this.RGBBitCount = input.ReadValueU32(endian);
+            this.RedBitMask = input.ReadValueU32(endian);
+            this.GreenBitMask = input.ReadValueU32(endian);
+            this.BlueBitMask = input.ReadValueU32(endian);
+            this.AlphaBitMask = input.ReadValueU32(endian);
         }
     }
 }

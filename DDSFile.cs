@@ -29,7 +29,7 @@ namespace Gibbed.Squish
 {
 	public class DDSFile
 	{
-        public bool LittleEndian = true;
+        public Endian Endian = Endian.Little;
         public DDS.Header Header = new DDS.Header();
         private byte[] _PixelData = null;
         public byte[] PixelData
@@ -122,10 +122,10 @@ namespace Gibbed.Squish
                 throw new FormatException("not a DDS texture");
             }
 
-            this.LittleEndian = magic == 0x20534444;
+            this.Endian = magic == 0x20534444 ? Endian.Little : Endian.Big;
 
             this.Header = new DDS.Header();
-            this.Header.Deserialize(input, this.LittleEndian);
+            this.Header.Deserialize(input, this.Endian);
 
             if ((this.Header.PixelFormat.Flags & DDS.PixelFormatFlags.FourCC) != 0)
             {
