@@ -94,19 +94,21 @@ namespace Gibbed.Squish
             public const string DllName = "squish32";
 
             [DllImport(DllName, EntryPoint = "CompressImage", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern void CompressImage([MarshalAs(UnmanagedType.LPArray)] byte[] rgba,
-                                                      int width,
-                                                      int height,
-                                                      [MarshalAs(UnmanagedType.LPArray)] byte[] blocks,
-                                                      int flags,
-                                                      [MarshalAs(UnmanagedType.LPArray)] float[] metric);
+            internal static extern void CompressImage(
+                [MarshalAs(UnmanagedType.LPArray)] byte[] rgba,
+                int width,
+                int height,
+                [MarshalAs(UnmanagedType.LPArray)] byte[] blocks,
+                int flags,
+                [MarshalAs(UnmanagedType.LPArray)] float[] metric);
 
             [DllImport(DllName, EntryPoint = "DecompressImage", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern void DecompressImage([MarshalAs(UnmanagedType.LPArray)] byte[] rgba,
-                                                        int width,
-                                                        int height,
-                                                        [MarshalAs(UnmanagedType.LPArray)] byte[] blocks,
-                                                        int flags);
+            internal static extern void DecompressImage(
+                [MarshalAs(UnmanagedType.LPArray)] byte[] rgba,
+                int width,
+                int height,
+                [MarshalAs(UnmanagedType.LPArray)] byte[] blocks,
+                int flags);
         }
 
         private sealed class Native64
@@ -114,19 +116,21 @@ namespace Gibbed.Squish
             public const string DllName = "squish64";
 
             [DllImport(DllName, EntryPoint = "CompressImage", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern void CompressImage([MarshalAs(UnmanagedType.LPArray)] byte[] rgba,
-                                                      int width,
-                                                      int height,
-                                                      [MarshalAs(UnmanagedType.LPArray)] byte[] blocks,
-                                                      int flags,
-                                                      [MarshalAs(UnmanagedType.LPArray)] float[] metric);
+            internal static extern void CompressImage(
+                [MarshalAs(UnmanagedType.LPArray)] byte[] rgba,
+                int width,
+                int height,
+                [MarshalAs(UnmanagedType.LPArray)] byte[] blocks,
+                int flags,
+                [MarshalAs(UnmanagedType.LPArray)] float[] metric);
 
             [DllImport(DllName, EntryPoint = "DecompressImage", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern void DecompressImage([MarshalAs(UnmanagedType.LPArray)] byte[] rgba,
-                                                        int width,
-                                                        int height,
-                                                        [MarshalAs(UnmanagedType.LPArray)] byte[] blocks,
-                                                        int flags);
+            internal static extern void DecompressImage(
+                [MarshalAs(UnmanagedType.LPArray)] byte[] rgba,
+                int width,
+                int height,
+                [MarshalAs(UnmanagedType.LPArray)] byte[] blocks,
+                int flags);
         }
 
         private static void CallDecompressImage(byte[] rgba, int width, int height, byte[] blocks, int flags)
