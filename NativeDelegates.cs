@@ -24,18 +24,18 @@ namespace Gibbed
 {
     public static partial class Squish
     {
-        internal struct NativeDelegates
+        private struct NativeDelegates
         {
-            internal NativeDelegate.CompressMasked CompressMasked;
-            internal NativeDelegate.Compress Compress;
-            internal NativeDelegate.Decompress Decompress;
-            internal NativeDelegate.GetStorageRequirements GetStorageRequirements;
-            internal NativeDelegate.CompressImage CompressImage;
-            internal NativeDelegate.CompressImage2 CompressImage2;
-            internal NativeDelegate.DecompressImage DecompressImage;
-            internal NativeDelegate.DecompressImage2 DecompressImage2;
-            internal NativeDelegate.ComputeMSE ComputeMSE;
-            internal NativeDelegate.ComputeMSE2 ComputeMSE2;
+            public NativeDelegate.CompressMasked CompressMasked;
+            public NativeDelegate.Compress Compress;
+            public NativeDelegate.Decompress Decompress;
+            public NativeDelegate.GetStorageRequirements GetStorageRequirements;
+            public NativeDelegate.CompressImage CompressImage;
+            public NativeDelegate.CompressImage2 CompressImage2;
+            public NativeDelegate.DecompressImage DecompressImage;
+            public NativeDelegate.DecompressImage2 DecompressImage2;
+            public NativeDelegate.ComputeMSE ComputeMSE;
+            public NativeDelegate.ComputeMSE2 ComputeMSE2;
         }
     }
 }

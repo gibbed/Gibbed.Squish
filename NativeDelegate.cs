@@ -26,18 +26,18 @@ namespace Gibbed
 {
     public static partial class Squish
     {
-        internal static class NativeDelegate
+        private static class NativeDelegate
         {
-            internal delegate void CompressMasked(IntPtr rgba, int mask, IntPtr block, int flags, IntPtr metric);
-            internal delegate void Compress(IntPtr rgba, IntPtr block, int flags, IntPtr metric);
-            internal delegate void Decompress(IntPtr rgba, IntPtr block, int flags);
-            internal delegate int GetStorageRequirements(int width, int height, int flags);
-            internal delegate void CompressImage(IntPtr rgba, int width, int height, IntPtr blocks, int flags, IntPtr metric);
-            internal delegate void CompressImage2(IntPtr rgba, int width, int height, int pitch, IntPtr blocks, int flags, IntPtr metric);
-            internal delegate void DecompressImage(IntPtr rgba, int width, int height, IntPtr blocks, int flags);
-            internal delegate void DecompressImage2(IntPtr rgba, int width, int height, int pitch, IntPtr blocks, int flags);
-            internal delegate void ComputeMSE(IntPtr rgba, int width, int height, IntPtr dxt, int flags, out double colorMSE, out double alphaMSE);
-            internal delegate void ComputeMSE2(IntPtr rgba, int width, int height, int pitch, IntPtr dxt, int flags, out double colorMSE, out double alphaMSE);
+            public delegate void CompressMasked(IntPtr rgba, int mask, IntPtr block, int flags, IntPtr metric);
+            public delegate void Compress(IntPtr rgba, IntPtr block, int flags, IntPtr metric);
+            public delegate void Decompress(IntPtr rgba, IntPtr block, int flags);
+            public delegate int GetStorageRequirements(int width, int height, int flags);
+            public delegate void CompressImage(IntPtr rgba, int width, int height, IntPtr blocks, int flags, IntPtr metric);
+            public delegate void CompressImage2(IntPtr rgba, int width, int height, int pitch, IntPtr blocks, int flags, IntPtr metric);
+            public delegate void DecompressImage(IntPtr rgba, int width, int height, IntPtr blocks, int flags);
+            public delegate void DecompressImage2(IntPtr rgba, int width, int height, int pitch, IntPtr blocks, int flags);
+            public delegate void ComputeMSE(IntPtr rgba, int width, int height, IntPtr dxt, int flags, out double colorMSE, out double alphaMSE);
+            public delegate void ComputeMSE2(IntPtr rgba, int width, int height, int pitch, IntPtr dxt, int flags, out double colorMSE, out double alphaMSE);
         }
     }
 }
