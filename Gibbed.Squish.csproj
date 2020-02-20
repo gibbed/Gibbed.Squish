@@ -12,12 +12,9 @@
     <ProjectReference Include="..\Gibbed.IO\Gibbed.IO.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="ThirdParty\squish32.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ThirdParty\squish64.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Update="ThirdParty\squish_LICENSE.txt" Link="squish_LICENSE.txt" CopyToOutputDirectory="Never" />
+    <None Update="ThirdParty\squish32.dll" Link="squish32.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="ThirdParty\squish64.dll" Link="squish64.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="System.Drawing.Common">
