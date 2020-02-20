@@ -1,8 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45;net40</TargetFrameworks>
-    <AssemblyTitle>Gibbed.Squish</AssemblyTitle>
-    <Product>Gibbed.Squish</Product>
     <Company>Gibbed</Company>
     <Authors>Gibbed</Authors>
     <Description>http://gib.me/</Description>
@@ -15,10 +13,5 @@
     <None Update="ThirdParty\squish_LICENSE.txt" Link="squish_LICENSE.txt" CopyToOutputDirectory="Never" />
     <None Update="ThirdParty\squish32.dll" Link="squish32.dll" CopyToOutputDirectory="PreserveNewest" />
     <None Update="ThirdParty\squish64.dll" Link="squish64.dll" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Drawing.Common">
-      <Version>4.5.1</Version>
-    </PackageReference>
   </ItemGroup>
 </Project>
