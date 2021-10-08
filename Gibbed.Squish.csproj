@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45;net40</TargetFrameworks>
     <Company>Gibbed</Company>
     <Authors>Gibbed</Authors>
     <Description>http://gib.me/</Description>
@@ -14,4 +13,13 @@
     <None Update="ThirdParty\squish32.dll" Link="squish32.dll" CopyToOutputDirectory="PreserveNewest" />
     <None Update="ThirdParty\squish64.dll" Link="squish64.dll" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(GibbedSquish_TargetFrameworksToBuild)' == '' ">
+    <GibbedSquish_TargetFrameworksToBuild>$(TargetFrameworksToBuild)</GibbedSquish_TargetFrameworksToBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(GibbedSquish_TargetFrameworksToBuild)' == '' ">
+    <TargetFrameworks>netstandard2.0;net40;net45;net472;net48;net5.0</TargetFrameworks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(GibbedSquish_TargetFrameworksToBuild)' != '' ">
+    <TargetFrameworks>$(GibbedSquish_TargetFrameworksToBuild)</TargetFrameworks>
+  </PropertyGroup>
 </Project>
