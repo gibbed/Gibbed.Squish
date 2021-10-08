@@ -27,7 +27,7 @@ namespace Gibbed
 {
     public static partial class Squish
     {
-        [System.Flags]
+        [Flags]
         public enum Flags : int
         {
             None = 0,
