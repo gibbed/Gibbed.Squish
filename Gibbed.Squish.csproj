@@ -22,4 +22,7 @@
   <PropertyGroup Condition=" '$(GibbedSquish_TargetFrameworksToBuild)' != '' ">
     <TargetFrameworks>$(GibbedSquish_TargetFrameworksToBuild)</TargetFrameworks>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove=".git*" />
+  </ItemGroup>
 </Project>
